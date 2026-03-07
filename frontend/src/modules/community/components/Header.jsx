@@ -1,0 +1,44 @@
+export default function Header() {
+  return (
+    <header className="fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-6 bg-gray-900 shadow-lg z-40">
+
+      {/* LEFT SECTION */}
+      <div className="flex items-center gap-3">
+
+        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-pink-500 text-white">
+          💬
+        </div>
+
+        <div>
+          <div className="text-lg font-semibold text-white">
+            CareCircle
+          </div>
+
+          <div className="text-xs text-gray-100/60">
+            Community & peer support
+          </div>
+        </div>
+
+      </div>
+
+      {/* DATE */}
+      <div className="text-sm text-gray-100/60 hidden md:block">
+        {new Date().toDateString()}
+      </div>
+
+      {/* RIGHT SECTION */}
+      <div className="flex items-center gap-4 text-lg">
+
+        <span className="hover:text-pink-400 cursor-pointer">💬</span>
+        <span className="hover:text-pink-400 cursor-pointer">👥</span>
+        <span className="hover:text-pink-400 cursor-pointer">🗨️</span>
+
+        <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-sm font-semibold text-white">
+          CA
+        </div>
+
+      </div>
+
+    </header>
+  );
+}

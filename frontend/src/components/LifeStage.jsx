@@ -10,30 +10,49 @@ const stages = [
 export default function LifeStage({ onNext, onBack, lifeStage, setLifeStage }) {
   return (
     <div className="max-w-2xl w-full bg-gray-800 p-8 rounded-2xl shadow-lg text-center">
-      <h2 className="text-2xl font-bold mb-6">What’s your current life stage?</h2>
+
+      {/* Title */}
+      <h2 className="text-2xl font-bold mb-6 text-white">
+        What’s your current life stage?
+      </h2>
+
+      {/* Stage grid */}
       <div className="grid grid-cols-2 gap-4">
         {stages.map((stage) => (
           <button
             key={stage.title}
             onClick={() => setLifeStage(stage.title)}
-            className={`p-4 rounded-xl border ${
-              lifeStage === stage.title ? "border-pink-500 bg-pink-900" : "border-gray-600"
-            }`}
+            className={`p-4 rounded-xl border transition text-left
+              ${
+                lifeStage === stage.title
+                  ? "border-pink-500 bg-pink-900 text-white"
+                  : "border-gray-600 bg-gray-700 hover:bg-gray-600 text-gray-200"
+              }`}
           >
             <h3 className="font-semibold">{stage.title}</h3>
-            <p className="text-sm text-gray-400">{stage.desc}</p>
+            <p className="text-sm text-gray-100/60">{stage.desc}</p>
           </button>
         ))}
       </div>
+
+      {/* Navigation buttons */}
       <div className="flex justify-between mt-6">
-        <button onClick={onBack} className="text-gray-400">← Back</button>
+
+        <button
+          onClick={onBack}
+          className="text-gray-100/60 hover:text-white transition"
+        >
+          ← Back
+        </button>
+
         <button
           onClick={onNext}
           disabled={!lifeStage}
-          className="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-lg text-white disabled:opacity-50"
+          className="bg-pink-500 hover:bg-pink-600 transition px-6 py-2 rounded-lg text-white disabled:opacity-50"
         >
           Continue →
         </button>
+
       </div>
     </div>
   );
