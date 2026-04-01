@@ -6,7 +6,6 @@ import CreateGroup from "./components/CreateGroup";
 import DirectChat from "./components/DirectChat";
 import SafetyPrivacy from "./components/SafetyPrivacy";
 import SupportResources from "./components/SupportResources";
-import Footer from "./components/Footer";
 import { useNavigate } from "react-router-dom";
 
 export default function CommunityDashboard() {
@@ -49,7 +48,7 @@ export default function CommunityDashboard() {
         <SupportResources />
 
       </main>
-      <Footer />
+      
     </div>
     </div>
   );

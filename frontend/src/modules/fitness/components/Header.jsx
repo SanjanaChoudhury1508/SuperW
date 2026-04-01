@@ -12,10 +12,8 @@ export default function Header() {
         </div>
 
         <div>
-          <div className="text-lg font-semibold">Fit & Fuel</div>
-          <div className="text-xs text-gray-100/60">
-            Fitness + Nutrition Dashboard
-          </div>
+          <div className="text-lg font-semibold">Fitness + Nutrition Tracking</div>
+          
         </div>
 
       </div>
@@ -46,9 +44,7 @@ export default function Header() {
           ＋
         </button>
 
-        <button className="w-8 h-8 rounded-full bg-violet-600 text-white flex items-center justify-center">
-          FI
-        </button>
+        
 
       </nav>
 

@@ -11,12 +11,9 @@ export default function Header() {
 
         <div>
           <div className="text-lg font-semibold text-white">
-            CareCircle
+            Community & Peer Support
           </div>
 
-          <div className="text-xs text-gray-100/60">
-            Community & peer support
-          </div>
         </div>
 
       </div>
@@ -24,19 +21,6 @@ export default function Header() {
       {/* DATE */}
       <div className="text-sm text-gray-100/60 hidden md:block">
         {new Date().toDateString()}
-      </div>
-
-      {/* RIGHT SECTION */}
-      <div className="flex items-center gap-4 text-lg">
-
-        <span className="hover:text-pink-400 cursor-pointer">💬</span>
-        <span className="hover:text-pink-400 cursor-pointer">👥</span>
-        <span className="hover:text-pink-400 cursor-pointer">🗨️</span>
-
-        <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-sm font-semibold text-white">
-          CA
-        </div>
-
       </div>
 
     </header>

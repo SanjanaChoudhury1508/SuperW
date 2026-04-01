@@ -6,7 +6,7 @@ import AppointmentPlanner from "./components/AppointmentPlanner";
 import Calendar from "./components/Calendar";
 import Insights from "./components/Insights";
 import Resources from "./components/Resources";
-import Footer from "./components/Footer";
+
 import { useNavigate } from "react-router-dom";
 
 export default function BreastDashboard() {
@@ -211,8 +211,6 @@ export default function BreastDashboard() {
         </section>
 
       </main>
-
-      <Footer />
 
     </div>
     </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-6 glass card-border z-40">
@@ -10,8 +8,7 @@ export default function Header() {
           </svg>
         </div>
         <div>
-          <div className="text-lg font-heading">BloomCare</div>
-          <div className="text-xs text-offwhite/60">Pregnancy support & tracking</div>
+          <div className="text-lg font-heading">Pregnancy Support & Tracking</div>
         </div>
       </div>
 
@@ -23,9 +20,6 @@ export default function Header() {
         <button className="nav-btn p-2 rounded-md hover:scale-105 transition-transform" data-target="overview" title="Overview">Overview</button>
         <button className="nav-btn p-2 rounded-md hover:scale-105 transition-transform" data-target="growth" title="Baby Growth">Growth</button>
         <button className="nav-btn p-2 rounded-md hover:scale-105 transition-transform" data-target="appointments" title="Appointments">Appointments</button>
-        <button className="p-1 rounded-full bg-gray-800/6">
-          <img src="https://api.dicebear.com/6.x/initials/svg?seed=BloomUser" className="w-8 h-8 rounded-full" alt="avatar" />
-        </button>
       </nav>
     </header>
   );

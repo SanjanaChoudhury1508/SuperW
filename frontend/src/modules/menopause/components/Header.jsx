@@ -11,11 +11,7 @@ export default function Header() {
 
         <div>
           <div className="text-lg font-semibold">
-            EasePause
-          </div>
-
-          <div className="text-xs text-gray-100/60">
-            Menopause guidance & support
+            Menopause Guidance & Support
           </div>
         </div>
 
@@ -37,9 +33,6 @@ export default function Header() {
         <span>🌡️</span>
         <span>📘</span>
 
-        <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-sm text-white">
-          EA
-        </div>
 
       </div>
 

@@ -7,10 +7,7 @@ export default function SafetyHeader() {
         </div>
 
         <div>
-          <div className="text-lg font-semibold">SafeGuard</div>
-          <div className="text-xs text-gray-100/60">
-            Personal safety & emergency tools
-          </div>
+          <div className="text-lg font-semibold">Personal Safety & Emergency Tools</div>
         </div>
       </div>
 

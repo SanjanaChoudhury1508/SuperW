@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./components/Header";
 import ProgressRing from "./components/ProgressRing";
 import QuickStats from "./components/QuickStats";
@@ -7,48 +6,51 @@ import Meals from "./components/Meals";
 import Insights from "./components/Insights";
 import Planner from "./components/Planner";
 import Settings from "./components/Settings";
-import Footer from "./components/Footer";
 import { useNavigate } from "react-router-dom";
 
 export default function FitnessDashboard() {
   const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 pt-20 px-6 pb-6">
-
-      <button
-        onClick={() => navigate("/dashboard")}
-        className="mb-6 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm"
-      >
-        ← Back to Dashboard
-      </button>
-
     <div className="min-h-screen bg-gray-900 text-gray-100">
+
       <Header />
 
       <main className="pt-20 px-6 pb-16 max-w-7xl mx-auto">
-        
+
+        {/* Back Button */}
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="mb-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm"
+        >
+          ← Back to Dashboard
+        </button>
+
         {/* Overview */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          <div className="md:col-span-2 bg-gray-800 p-6 rounded-2xl shadow">
-            
+          {/* Left column */}
+          <div className="md:col-span-2 bg-gray-800 p-6 rounded-2xl border border-gray-700">
+
             <div className="flex gap-6 items-start">
+              
               <ProgressRing value={420} goal={2000} pct={0.35} />
 
               <div className="flex-1">
+
                 <div className="flex items-center justify-between">
-                  
+
                   <div>
                     <h2 className="text-2xl font-semibold">
                       Today's Summary
                     </h2>
 
-                    <p className="text-sm text-gray-100/60 mt-1">
+                    <p className="text-sm text-gray-400 mt-1">
                       Workout: Upper Body • Meals: 3
                     </p>
                   </div>
 
-                  <div className="text-sm text-gray-100/60">
+                  <div className="text-sm text-gray-400">
                     Goal: <strong>2000</strong> kcal
                   </div>
 
@@ -57,19 +59,22 @@ export default function FitnessDashboard() {
                 <QuickStats />
 
               </div>
+
             </div>
 
             {/* Weekly Activity */}
-            <div className="mt-6 p-4 bg-gray-800 rounded-xl shadow">
-              
+            <div className="mt-6 p-4 bg-gray-800 rounded-xl border border-gray-700">
+
               <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-100/60">
+
+                <div className="text-sm text-gray-400">
                   Weekly Activity
                 </div>
 
-                <div className="text-xs text-gray-100/60">
+                <div className="text-xs text-gray-400">
                   Goal steps: <strong>50k</strong>
                 </div>
+
               </div>
 
               <div className="mt-3">
@@ -87,13 +92,15 @@ export default function FitnessDashboard() {
               </div>
 
             </div>
+
           </div>
 
           {/* Right column */}
           <aside className="space-y-4">
 
-            <div className="p-4 bg-gray-800 rounded-2xl shadow">
-              <div className="text-xs text-gray-100/60">
+            <div className="p-4 bg-gray-800 rounded-2xl border border-gray-700">
+
+              <div className="text-xs text-gray-400">
                 Weekly Goal
               </div>
 
@@ -101,29 +108,34 @@ export default function FitnessDashboard() {
                 Build Strength
               </div>
 
-              <div className="mt-3 text-sm text-gray-100/60">
+              <div className="mt-3 text-sm text-gray-400">
                 4 workouts this week • Progress 60%
               </div>
+
             </div>
 
-            <div className="p-4 bg-gray-800 rounded-2xl shadow">
-              <div className="text-xs text-gray-100/60">
+            <div className="p-4 bg-gray-800 rounded-2xl border border-gray-700">
+
+              <div className="text-xs text-gray-400">
                 Next Workout
               </div>
 
               <div className="mt-2 text-sm">
                 Upper Body • 45 min • 18:00
               </div>
+
             </div>
 
-            <div className="p-4 bg-gray-800 rounded-2xl shadow">
-              <div className="text-xs text-gray-100/60">
+            <div className="p-4 bg-gray-800 rounded-2xl border border-gray-700">
+
+              <div className="text-xs text-gray-400">
                 Meal Plan
               </div>
 
               <div className="mt-2 text-sm">
                 Lunch: Grilled chicken salad • 520 kcal
               </div>
+
             </div>
 
           </aside>
@@ -162,9 +174,7 @@ export default function FitnessDashboard() {
         </section>
 
       </main>
-      <Footer />
 
-    </div>
     </div>
   );
 }

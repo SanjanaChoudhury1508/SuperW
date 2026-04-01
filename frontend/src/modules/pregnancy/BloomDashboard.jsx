@@ -188,9 +188,7 @@ export default function BloomDashboard() {
         </section>
       </main>
 
-      <footer className="fixed bottom-4 left-0 right-0 flex justify-center pointer-events-none">
-        <div className="text-xs text-offwhite/50 bg-charcoal/50 px-4 py-2 rounded-lg pointer-events-auto">BloomCare © 2025</div>
-      </footer>
+      
     </div>
     </div>
   );

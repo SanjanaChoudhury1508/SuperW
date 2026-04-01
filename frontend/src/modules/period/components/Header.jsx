@@ -18,8 +18,8 @@ export default function Header() {
           </svg>
         </div>
         <div>
-          <div className="text-lg font-heading">CycleSync</div>
-          <div className="text-xs text-offwhite/60">Sleek cycle tracking</div>
+          <div className="text-lg font-heading">Cycle Tracking</div>
+          
         </div>
       </div>
 
@@ -97,13 +97,7 @@ export default function Header() {
           </svg>
         </button>
 
-        <button className="p-1 rounded-full bg-gray-800/6">
-          <img
-            src="https://api.dicebear.com/6.x/initials/svg?seed=Sanjana"
-            className="w-8 h-8 rounded-full"
-            alt="avatar"
-          />
-        </button>
+        
       </nav>
     </header>
   );

@@ -3,7 +3,7 @@ import Overview from "./components/Overview";
 import Symptoms from "./components/Symptoms";
 import Guidance from "./components/Guidance";
 import Settings from "./components/Settings";
-import Footer from "./components/Footer";
+
 import { useNavigate } from "react-router-dom";
 
 export default function MenopauseDashboard() {
@@ -27,8 +27,6 @@ export default function MenopauseDashboard() {
         <Guidance />
         <Settings />
       </main>
-
-      <Footer />
 
     </div>
     </div>

@@ -34,12 +34,10 @@ export default function Header() {
         {/* Title */}
         <div>
           <div className="text-lg font-semibold text-white">
-            BreastCare
+            Breast Health Tracker & Resources
           </div>
 
-          <div className="text-xs text-gray-100/60">
-            Breast health tracker & resources
-          </div>
+          
         </div>
 
       </div>
@@ -62,15 +60,6 @@ export default function Header() {
 
         <button className="hover:text-pink-400 transition">
           Calendar
-        </button>
-
-        {/* Avatar */}
-        <button className="p-1 rounded-full bg-gray-700">
-          <img
-            src="https://api.dicebear.com/6.x/initials/svg?seed=BR"
-            className="w-8 h-8 rounded-full"
-            alt="avatar"
-          />
         </button>
 
       </nav>

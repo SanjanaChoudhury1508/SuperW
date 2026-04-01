@@ -28,9 +28,7 @@ export default function MindDashboard() {
         <Settings />
       </main>
 
-      <footer className="text-center text-xs text-gray-100/60 py-4">
-        MindEase © 2025
-      </footer>
+      
     </div>
     </div>
   );

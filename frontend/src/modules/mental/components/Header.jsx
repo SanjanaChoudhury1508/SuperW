@@ -17,11 +17,7 @@ export default function Header() {
 
         <div>
           <div className="text-lg font-semibold">
-            MindEase
-          </div>
-
-          <div className="text-xs text-gray-100/60">
-            Mental wellness & balance
+            Mental Wellness & Balance
           </div>
         </div>
 
@@ -32,10 +28,6 @@ export default function Header() {
         <span>🏠</span>
         <span>😊</span>
         <span>🧘</span>
-
-        <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-xs text-white">
-          MI
-        </div>
 
       </nav>
 
