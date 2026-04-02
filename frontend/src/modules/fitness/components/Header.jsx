@@ -2,24 +2,26 @@ import React from "react";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-6 bg-gray-800 shadow z-40">
-      
+    <header className="fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-6 bg-[#0d0d0f]/90 backdrop-blur-md border-b border-white/[0.06] z-40">
+
       {/* Left section */}
       <div className="flex items-center gap-3">
-        
-        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-purple-800/30 to-pink-500/30">
-          <span className="text-sm font-semibold text-pink-300">FF</span>
+
+        <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-violet-500/20 border border-violet-500/30">
+          <span className="text-xs font-semibold text-violet-300">FF</span>
         </div>
 
         <div>
-          <div className="text-lg font-semibold">Fitness + Nutrition Tracking</div>
-          
+          <div className="text-sm font-semibold text-white leading-tight">
+            Fitness + Nutrition
+          </div>
+          <div className="text-[11px] text-gray-500 leading-tight">Tracking</div>
         </div>
 
       </div>
 
       {/* Date */}
-      <div className="text-sm text-gray-100/60 hidden md:block">
+      <div className="text-xs text-gray-500 hidden md:block tabular-nums">
         {new Date().toLocaleDateString(undefined, {
           weekday: "short",
           month: "short",
@@ -28,23 +30,21 @@ export default function Header() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex items-center gap-4">
+      <nav className="flex items-center gap-1">
 
         <button
           title="Overview"
-          className="p-2 rounded-md bg-gray-700 hover:bg-gray-600 transition"
+          className="px-3 py-1.5 rounded-md text-gray-400 hover:text-white hover:bg-white/[0.06] transition-all duration-150 text-sm"
         >
           ▦
         </button>
 
         <button
           title="Quick Add"
-          className="p-2 rounded-md bg-gray-700 hover:bg-gray-600 transition"
+          className="px-3 py-1.5 rounded-md text-gray-400 hover:text-white hover:bg-white/[0.06] transition-all duration-150 text-sm"
         >
           ＋
         </button>
-
-        
 
       </nav>
 

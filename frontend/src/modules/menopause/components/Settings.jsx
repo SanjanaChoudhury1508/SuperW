@@ -1,25 +1,27 @@
 export default function Settings() {
   return (
-    <section className="max-w-3xl p-6 rounded-2xl bg-gray-800 shadow">
+    <section className="p-6 rounded-2xl bg-[#141418] border border-white/[0.06] max-w-3xl">
 
-      <h3 className="text-lg font-semibold">
+      <h3 className="text-base font-semibold text-white mb-5">
         Settings
       </h3>
 
-      <div className="mt-4 space-y-3 text-sm text-gray-300">
+      <div className="space-y-3">
 
-        <div className="flex justify-between items-center">
-          <span>Daily symptom reminder</span>
-
-          <select className="bg-gray-700 border border-gray-600 px-2 py-1 rounded">
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-400">Daily symptom reminder</span>
+          <select className="bg-[#1e1e24] border border-white/[0.08] text-gray-300 text-sm px-3 py-1.5 rounded-lg focus:outline-none focus:border-purple-500/40 transition-colors cursor-pointer">
             <option>Evening</option>
             <option>Morning</option>
           </select>
         </div>
 
-        <div className="flex justify-between items-center">
-          <span>Share reports with doctor</span>
-          <input type="checkbox" />
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-400">Share reports with doctor</span>
+          <input
+            type="checkbox"
+            className="w-4 h-4 accent-purple-500 cursor-pointer"
+          />
         </div>
 
       </div>

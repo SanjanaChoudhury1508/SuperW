@@ -11,43 +11,50 @@ export default function ProgressRing({ dayOfCycle, cycleLength }) {
 
   return (
     <div className="flex items-start gap-6">
+
       {/* Ring */}
-      <div className="w-40 h-40 flex items-center justify-center">
-        <svg className="ring-svg" viewBox="0 0 120 120" width="140" height="140">
+      <div className="w-36 h-36 flex-shrink-0 flex items-center justify-center">
+        <svg viewBox="0 0 120 120" width="132" height="132" className="rotate-[-90deg]">
           <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0%" stopColor="#A59CC6" />
-              <stop offset="100%" stopColor="#F7C6B6" />
+            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#fcd34d" />
             </linearGradient>
           </defs>
-          <circle cx="60" cy="60" r="48" stroke="rgba(255,255,255,0.06)" strokeWidth="12" fill="none"/>
+          <circle cx="60" cy="60" r="48" stroke="rgba(255,255,255,0.05)" strokeWidth="10" fill="none" />
           <circle
             cx="60" cy="60" r="48"
             stroke="url(#g1)"
-            strokeWidth="12"
+            strokeWidth="10"
             strokeLinecap="round"
             strokeDasharray={302}
             strokeDashoffset={offset}
             fill="none"
           />
-          <text x="60" y="64" textAnchor="middle" fontSize="20" fill="#F2F2F2" fontWeight="600">
+          <text x="60" y="57" textAnchor="middle" fontSize="18" fill="#ffffff" fontWeight="600" transform="rotate(90 60 60)">
             Day {dayOfCycle}
           </text>
-          <text x="60" y="82" textAnchor="middle" fontSize="12" fill="#F2F2F2" opacity="0.75">
+          <text x="60" y="74" textAnchor="middle" fontSize="8" fill="rgba(255,255,255,0.4)" transform="rotate(90 60 60)">
             of {cycleLength}
           </text>
         </svg>
       </div>
 
-      <div className="flex-1">
-        <div className="flex items-center justify-between">
+      {/* Info */}
+      <div className="flex-1 min-w-0 pt-2">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <h2 className="text-2xl font-heading">Current Status</h2>
-            <p className="text-sm text-offwhite/70 mt-1">Expected Period in {cycleLength - dayOfCycle} days</p>
+            <h2 className="text-xl font-semibold text-white tracking-tight">Current Status</h2>
+            <p className="text-sm text-gray-500 mt-0.5">
+              Expected period in <span className="text-amber-400 font-medium">{cycleLength - dayOfCycle} days</span>
+            </p>
           </div>
-          <div className="text-sm text-offwhite/60">Avg cycle: <strong>{cycleLength}</strong>d</div>
+          <div className="text-xs text-gray-500 bg-[#1e1e24] border border-white/[0.06] rounded-lg px-3 py-2 flex-shrink-0">
+            Avg cycle: <strong className="text-gray-300 font-medium">{cycleLength}d</strong>
+          </div>
         </div>
       </div>
+
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const quickOptions = [
-  { id: "mood", label: "Mood", icon: "😊", color: "from-purple-500 to-pink-400" },
-  { id: "cramp", label: "Cramps", icon: "💢", color: "from-pink-400 to-rose-500" },
-  { id: "flow", label: "Flow", icon: "💧", color: "from-sky-400 to-purple-400" },
-  { id: "energy", label: "Energy", icon: "⚡", color: "from-rose-400 to-pink-500" },
+  { id: "mood", label: "Mood", icon: "😊" },
+  { id: "cramp", label: "Cramps", icon: "💢" },
+  { id: "flow", label: "Flow", icon: "💧" },
+  { id: "energy", label: "Energy", icon: "⚡" },
 ];
 
 export default function QuickLog() {
@@ -17,27 +17,24 @@ export default function QuickLog() {
   };
 
   return (
-    <div className="glass card-border rounded-2xl p-4 flex justify-between items-center overflow-x-auto gap-3">
-
+    <div className="flex items-center gap-2 flex-wrap">
       {quickOptions.map((opt) => {
         const isActive = selected.includes(opt.id);
-
         return (
           <button
             key={opt.id}
             onClick={() => toggle(opt.id)}
-            className={`flex flex-col items-center justify-center w-20 min-w-[5rem] h-20 rounded-xl border transition-all duration-200 ${
+            className={`flex flex-col items-center justify-center w-20 h-20 rounded-xl border text-sm font-medium transition-all duration-200 ${
               isActive
-                ? `bg-gradient-to-br ${opt.color} text-white scale-105`
-                : "bg-gray-800/5 text-gray-300 hover:bg-gray-800/10"
+                ? "bg-amber-500/20 border-amber-500/40 text-amber-300 scale-105"
+                : "bg-[#1a1a1f] border-white/[0.05] text-gray-400 hover:bg-[#222228] hover:text-gray-200 hover:border-white/[0.1]"
             }`}
           >
-            <span className="text-xl">{opt.icon}</span>
-            <span className="text-xs font-medium mt-1">{opt.label}</span>
+            <span className="text-lg leading-none mb-1">{opt.icon}</span>
+            <span className="text-xs">{opt.label}</span>
           </button>
         );
       })}
-
     </div>
   );
 }
