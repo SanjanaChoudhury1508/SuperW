@@ -1,50 +1,24 @@
-import React from "react";
-
 export default function QuickLog() {
-
   const handleClick = (sym) => {
     alert(`Logged: ${sym}`);
   };
 
+  const items = ["Kick", "Contraction", "Water", "Note"];
+
   return (
     <div>
-
-      <div className="text-sm text-gray-100/60 mb-2">
-        Quick Log
+      <div className="text-xs text-gray-500 uppercase tracking-wider mb-2.5">Quick Log</div>
+      <div className="flex gap-2 flex-wrap">
+        {items.map((item) => (
+          <button
+            key={item}
+            onClick={() => handleClick(item)}
+            className="px-3.5 py-2 rounded-lg text-sm font-medium bg-[#1e1e24] border border-white/[0.08] text-gray-300 hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-300 transition-all duration-150"
+          >
+            {item}
+          </button>
+        ))}
       </div>
-
-      <div className="flex gap-3 items-center">
-
-        <button
-          onClick={() => handleClick("Kick")}
-          className="px-4 py-2 bg-gray-800/40 rounded-lg border border-white/10 hover:scale-105 transition"
-        >
-          Kick
-        </button>
-
-        <button
-          onClick={() => handleClick("Contraction")}
-          className="px-4 py-2 bg-gray-800/40 rounded-lg border border-white/10 hover:scale-105 transition"
-        >
-          Contraction
-        </button>
-
-        <button
-          onClick={() => handleClick("Water Intake")}
-          className="px-4 py-2 bg-gray-800/40 rounded-lg border border-white/10 hover:scale-105 transition"
-        >
-          Water
-        </button>
-
-        <button
-          onClick={() => handleClick("Note")}
-          className="px-4 py-2 bg-gray-800/40 rounded-lg border border-white/10 hover:scale-105 transition"
-        >
-          Note
-        </button>
-
-      </div>
-
     </div>
   );
 }
