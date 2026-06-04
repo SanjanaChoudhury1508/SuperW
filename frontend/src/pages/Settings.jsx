@@ -1,52 +1,96 @@
 export default function Settings() {
-  return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-6">
+  const menuItems = [
+    "General",
+    "Notifications",
+    "Privacy",
+    "Security",
+    "Health Data",
+    "Accessibility",
+    "Connected Apps",
+    "Account",
+  ];
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+  const notifications = [
+    { label: "Cycle reminders", defaultChecked: true },
+    { label: "Fitness updates", defaultChecked: true },
+    { label: "Community replies", defaultChecked: true },
+    { label: "Emergency alerts", defaultChecked: true },
+  ];
+
+  const privacy = [
+    { label: "Anonymous community posting", defaultChecked: true },
+    { label: "Share data for research", defaultChecked: false },
+    { label: "Location sharing", defaultChecked: true },
+  ];
+
+  const accessibility = [
+    { label: "Large text mode", defaultChecked: false },
+    { label: "Reduced motion", defaultChecked: false },
+    { label: "High contrast", defaultChecked: false },
+  ];
+
+  const securityActions = [
+    { label: "Change Password", action: "Update" },
+    { label: "Two-Factor Authentication", action: "Enable" },
+    { label: "Active Sessions", action: "View" },
+  ];
+
+  const healthActions = [
+    { label: "Download health data", action: "Export" },
+    { label: "Delete specific records", action: "Manage" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#0d0d0f] text-gray-100 px-6 py-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
 
         {/* Sidebar */}
-        <aside className="space-y-4">
-
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-4 space-y-3 text-sm">
-            <div className="font-semibold">Settings Menu</div>
-            <div className="text-gray-100/60">General</div>
-            <div className="text-gray-100/60">Notifications</div>
-            <div className="text-gray-100/60">Privacy</div>
-            <div className="text-gray-100/60">Security</div>
-            <div className="text-gray-100/60">Health Data</div>
-            <div className="text-gray-100/60">Accessibility</div>
-            <div className="text-gray-100/60">Connected Apps</div>
-            <div className="text-gray-100/60">Account</div>
+        <aside>
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-4 sticky top-8">
+            <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">Settings Menu</div>
+            <nav className="space-y-0.5">
+              {menuItems.map((item, i) => (
+                <button
+                  key={item}
+                  className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
+                    i === 0
+                      ? "bg-white/[0.06] text-white font-medium"
+                      : "text-gray-400 hover:text-white hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </nav>
           </div>
-
         </aside>
 
-        {/* Main Settings */}
-        <section className="md:col-span-3 space-y-6">
+        {/* Main */}
+        <section className="md:col-span-3 space-y-5">
 
           {/* General */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">General Settings</h2>
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">General Settings</h2>
 
-            <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+            <div className="space-y-3">
 
-              <div className="flex justify-between items-center">
-                <span>Dark Mode</span>
-                <input type="checkbox" defaultChecked />
+              <div className="flex items-center justify-between py-3 border-b border-white/[0.04]">
+                <span className="text-sm text-gray-300">Dark Mode</span>
+                <input type="checkbox" defaultChecked className="w-4 h-4 accent-indigo-500 cursor-pointer" />
               </div>
 
-              <div className="flex justify-between items-center">
-                <span>Language</span>
-                <select className="bg-gray-700 border border-gray-600 rounded px-2 py-1">
+              <div className="flex items-center justify-between py-3 border-b border-white/[0.04]">
+                <span className="text-sm text-gray-300">Language</span>
+                <select className="bg-[#1e1e24] border border-white/[0.08] text-gray-300 text-sm px-3 py-1.5 rounded-lg focus:outline-none focus:border-indigo-500/40 transition-colors cursor-pointer">
                   <option>English</option>
                   <option>Hindi</option>
                   <option>Tamil</option>
                 </select>
               </div>
 
-              <div className="flex justify-between items-center">
-                <span>Timezone</span>
-                <select className="bg-gray-700 border border-gray-600 rounded px-2 py-1">
+              <div className="flex items-center justify-between py-3">
+                <span className="text-sm text-gray-300">Timezone</span>
+                <select className="bg-[#1e1e24] border border-white/[0.08] text-gray-300 text-sm px-3 py-1.5 rounded-lg focus:outline-none focus:border-indigo-500/40 transition-colors cursor-pointer">
                   <option>GMT+5:30</option>
                 </select>
               </div>
@@ -55,160 +99,136 @@ export default function Settings() {
           </div>
 
           {/* Notifications */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">Notifications</h2>
-
-            <div className="mt-4 space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Cycle reminders</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Fitness updates</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Community replies</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Emergency alerts</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">Notifications</h2>
+            <div className="space-y-0">
+              {notifications.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i < notifications.length - 1 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <input
+                    type="checkbox"
+                    defaultChecked={item.defaultChecked}
+                    className="w-4 h-4 accent-indigo-500 cursor-pointer"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Privacy */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">Privacy</h2>
-
-            <div className="mt-4 space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Anonymous community posting</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Share data for research</span>
-                <input type="checkbox" />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Location sharing</span>
-                <input type="checkbox" defaultChecked />
-              </div>
-
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">Privacy</h2>
+            <div className="space-y-0">
+              {privacy.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i < privacy.length - 1 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <input
+                    type="checkbox"
+                    defaultChecked={item.defaultChecked}
+                    className="w-4 h-4 accent-indigo-500 cursor-pointer"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Security */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">Security</h2>
-
-            <div className="mt-4 space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Change Password</span>
-                <button className="text-purple-400 hover:text-purple-300">
-                  Update
-                </button>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Two Factor Authentication</span>
-                <button className="text-purple-400 hover:text-purple-300">
-                  Enable
-                </button>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Active Sessions</span>
-                <button className="text-purple-400 hover:text-purple-300">
-                  View
-                </button>
-              </div>
-
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">Security</h2>
+            <div className="space-y-0">
+              {securityActions.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i < securityActions.length - 1 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <button className="text-xs text-indigo-400 hover:text-indigo-300 border border-indigo-500/20 bg-indigo-500/10 hover:bg-indigo-500/15 px-3 py-1.5 rounded-lg transition-all duration-150">
+                    {item.action}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Health Data */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">Health Data</h2>
-
-            <div className="mt-4 space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Download health data</span>
-                <button className="text-purple-400 hover:text-purple-300">
-                  Export
-                </button>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Delete specific records</span>
-                <button className="text-purple-400 hover:text-purple-300">
-                  Manage
-                </button>
-              </div>
-
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">Health Data</h2>
+            <div className="space-y-0">
+              {healthActions.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i < healthActions.length - 1 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <button className="text-xs text-indigo-400 hover:text-indigo-300 border border-indigo-500/20 bg-indigo-500/10 hover:bg-indigo-500/15 px-3 py-1.5 rounded-lg transition-all duration-150">
+                    {item.action}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Accessibility */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <h2 className="text-lg font-semibold">Accessibility</h2>
-
-            <div className="mt-4 space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Large text mode</span>
-                <input type="checkbox" />
-              </div>
-
-              <div className="flex justify-between">
-                <span>Reduced motion</span>
-                <input type="checkbox" />
-              </div>
-
-              <div className="flex justify-between">
-                <span>High contrast</span>
-                <input type="checkbox" />
-              </div>
-
+          <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-white mb-5">Accessibility</h2>
+            <div className="space-y-0">
+              {accessibility.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i < accessibility.length - 1 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <input
+                    type="checkbox"
+                    defaultChecked={item.defaultChecked}
+                    className="w-4 h-4 accent-indigo-500 cursor-pointer"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Account actions */}
-          <div className="bg-gray-800 border bg-gray-700 rounded-2xl p-6">
-            <div className="space-y-4 text-sm">
-
-              <div className="flex justify-between">
-                <span>Deactivate account</span>
-                <button className="text-red-400 hover:text-red-300">
-                  Deactivate
-                </button>
-              </div>
-
-              <div className="flex justify-between">
-                <span>Delete account permanently</span>
-                <button className="text-red-400 hover:text-red-300">
-                  Delete
-                </button>
-              </div>
-
+          {/* Account — danger zone */}
+          <div className="bg-[#141418] border border-red-500/10 rounded-2xl p-6">
+            <h2 className="text-base font-semibold text-red-400/80 mb-5">Account</h2>
+            <div className="space-y-0">
+              {[
+                { label: "Deactivate account", action: "Deactivate" },
+                { label: "Delete account permanently", action: "Delete" },
+              ].map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex items-center justify-between py-3 ${
+                    i === 0 ? "border-b border-white/[0.04]" : ""
+                  }`}
+                >
+                  <span className="text-sm text-gray-400">{item.label}</span>
+                  <button className="text-xs text-red-400 hover:text-red-300 border border-red-500/20 bg-red-500/10 hover:bg-red-500/15 px-3 py-1.5 rounded-lg transition-all duration-150">
+                    {item.action}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
         </section>
-
       </div>
-
     </div>
   );
 }

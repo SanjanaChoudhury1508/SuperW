@@ -1,13 +1,26 @@
+const resources = [
+  "Emergency numbers",
+  "Self-defense tips",
+  "Legal help resources",
+];
+
 export default function SafetyResources() {
   return (
-    <section className="p-6 bg-gray-800 rounded-2xl border bg-gray-700">
-      <h3 className="text-lg font-semibold">Safety Resources</h3>
+    <section className="p-6 bg-[#141418] border border-white/[0.06] rounded-2xl">
 
-      <ul className="mt-4 list-disc list-inside text-sm text-gray-300 space-y-2">
-        <li>Emergency numbers</li>
-        <li>Self-defense tips</li>
-        <li>Legal help resources</li>
+      <h3 className="text-base font-semibold text-white mb-5">Safety Resources</h3>
+
+      <ul className="space-y-2">
+        {resources.map((item) => (
+          <li key={item}>
+            <button className="flex items-center gap-2.5 w-full text-sm text-gray-400 hover:text-white transition-colors duration-150 group text-left">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-500/50 group-hover:bg-sky-400 transition-colors flex-shrink-0" />
+              {item}
+            </button>
+          </li>
+        ))}
       </ul>
+
     </section>
   );
 }
