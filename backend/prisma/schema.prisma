@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  cycles        Cycle[]
+  moods         MoodLog[]
+  workouts      Workout[]
+  meals         Meal[]
+  symptomLogs   SymptomLog[]
+}
+
+model Cycle {
+  id        String    @id @default(uuid())
+  userId    String
+  startDate DateTime
+  endDate   DateTime?
+  flowLevel String?
+  symptoms  String?
+  notes     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model MoodLog {
+  id        String   @id @default(uuid())
+  userId    String
+  mood      String
+  journal   String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Workout {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  duration  Int
+  calories  Int?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Meal {
+  id        String   @id @default(uuid())
+  userId    String
+  mealType  String
+  calories  Int?
+  notes     String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SymptomLog {
+  id        String   @id @default(uuid())
+  userId    String
+  symptom   String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
