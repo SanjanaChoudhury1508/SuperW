@@ -1,9 +1,9 @@
 # Women's Wellness Platform
 
 A modern **multi-module wellness web application** designed to support women through different stages of life.
-The platform provides personalized dashboards and health tools covering menstrual health, pregnancy, mental wellness, safety, and more.
+The platform provides personalized dashboards and health tools covering menstrual health, mental wellness, safety, and more.
 
-Users can select their **life stage and areas of interest**, and the system dynamically generates a dashboard with relevant wellness modules.
+Users can select their **areas of interest**, and the system dynamically generates a dashboard with relevant wellness modules.
 
 ---
 
@@ -39,11 +39,10 @@ This project currently serves as a **front-end demonstration and design prototyp
 
 ## Project Overview
 
-Women's health involves many different aspects such as physical health, mental well-being, reproductive health, safety, and community support. This project aims to bring these tools together in a **single personalized wellness platform**.
+Women's health involves many different aspects such as physical health, mental well-being, reproductive health, and safety. This project aims to bring these tools together in a **single personalized wellness platform**.
 
 The platform allows users to:
 
-* Select their **life stage**
 * Choose **wellness interests**
 * Access a **customized dashboard**
 * Use multiple **health tracking modules**
@@ -78,14 +77,6 @@ The platform includes several specialized wellness modules:
 * Fertility insights
 * Cycle progress visualization
 
-#### Pregnancy Support
-
-* Pregnancy progress tracking
-* Kick counter
-* Contraction timer
-* Weekly baby development information
-* Appointment reminders
-
 #### Fitness & Nutrition
 
 * Workout tracking
@@ -106,19 +97,6 @@ The platform includes several specialized wellness modules:
 * Symptom tracking
 * Screening reminders
 * Health insights
-
-#### Menopause Guidance
-
-* Symptom tracking
-* Lifestyle recommendations
-* Sleep and hormone management guidance
-
-#### Community Support
-
-* Community feed
-* Support groups
-* Peer discussion spaces
-* Moderated wellness discussions
 
 #### Safety Module
 
@@ -159,10 +137,6 @@ The settings panel allows users to manage platform preferences such as:
 1. **Welcome Screen**
 
    * Introduction to the platform
-
-2. **Life Stage Selection**
-
-   * Users choose their current life stage
 
 3. **Interest Selection**
 
@@ -208,7 +182,6 @@ frontend
  │  ├ components
  │  │   ├ Dashboard.jsx
  │  │   ├ Interests.jsx
- │  │   ├ LifeStage.jsx
  │  │   └ Welcome.jsx
  │
  │  ├ context
@@ -216,12 +189,9 @@ frontend
  │
  │  ├ modules
  │  │   ├ period
- │  │   ├ pregnancy
  │  │   ├ fitness
  │  │   ├ mental
  │  │   ├ breast
- │  │   ├ menopause
- │  │   ├ community
  │  │   └ safety
  │
  │  ├ pages
