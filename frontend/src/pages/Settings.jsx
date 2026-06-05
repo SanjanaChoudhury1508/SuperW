@@ -13,12 +13,10 @@ export default function Settings() {
   const notifications = [
     { label: "Cycle reminders", defaultChecked: true },
     { label: "Fitness updates", defaultChecked: true },
-    { label: "Community replies", defaultChecked: true },
     { label: "Emergency alerts", defaultChecked: true },
   ];
 
   const privacy = [
-    { label: "Anonymous community posting", defaultChecked: true },
     { label: "Share data for research", defaultChecked: false },
     { label: "Location sharing", defaultChecked: true },
   ];
@@ -84,7 +82,7 @@ export default function Settings() {
                 <select className="bg-[#1e1e24] border border-white/[0.08] text-gray-300 text-sm px-3 py-1.5 rounded-lg focus:outline-none focus:border-indigo-500/40 transition-colors cursor-pointer">
                   <option>English</option>
                   <option>Hindi</option>
-                  <option>Tamil</option>
+                  <option>Spanish</option>
                 </select>
               </div>
 

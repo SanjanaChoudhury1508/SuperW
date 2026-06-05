@@ -1,6 +1,42 @@
+import { useEffect, useState } from "react";
+import { getCycles } from "../../../api/cycleApi";
+
 export default function Calendar() {
   const days = Array.from({ length: 30 }, (_, i) => i + 1);
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const [periodDays, setPeriodDays] = useState([]);
+
+  useEffect(() => {
+    fetchCycles();
+  }, []);
+
+  const fetchCycles = async () => {
+    try {
+      const res = await getCycles();
+
+      const highlightedDays = [];
+
+      res.data.forEach((cycle) => {
+        if (!cycle.startDate || !cycle.endDate) return;
+
+        const start = new Date(cycle.startDate);
+        const end = new Date(cycle.endDate);
+
+        for (
+          let d = new Date(start);
+          d <= end;
+          d.setDate(d.getDate() + 1)
+        ) {
+          highlightedDays.push(d.getDate());
+        }
+      });
+
+      setPeriodDays(highlightedDays);
+    } catch (error) {
+      console.error("Failed to load cycles:", error);
+    }
+  };
 
   return (
     <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
@@ -15,7 +51,10 @@ export default function Calendar() {
       {/* Week header */}
       <div className="grid grid-cols-7 gap-1 mb-2">
         {weekDays.map((d) => (
-          <div key={d} className="text-[11px] text-gray-600 text-center font-medium py-1">
+          <div
+            key={d}
+            className="text-[11px] text-gray-600 text-center font-medium py-1"
+          >
             {d}
           </div>
         ))}
@@ -27,7 +66,7 @@ export default function Calendar() {
           <div
             key={day}
             className={`aspect-square flex items-center justify-center rounded-lg text-sm transition-all duration-100 cursor-pointer relative ${
-              [].includes(day)
+              periodDays.includes(day)
                 ? "bg-amber-500 text-white font-medium"
                 : "text-gray-400 hover:bg-[#1e1e24] hover:text-white"
             }`}

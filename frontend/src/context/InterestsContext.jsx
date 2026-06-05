@@ -5,10 +5,9 @@ const InterestsContext = createContext();
 
 export const InterestsProvider = ({ children }) => {
   const [interests, setInterests] = useState([]);
-  const [lifeStage, setLifeStage] = useState("");
 
   return (
-    <InterestsContext.Provider value={{ interests, setInterests, lifeStage, setLifeStage }}>
+    <InterestsContext.Provider value={{ interests, setInterests}}>
       {children}
     </InterestsContext.Provider>
   );

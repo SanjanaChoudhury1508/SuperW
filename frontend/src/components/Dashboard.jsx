@@ -8,10 +8,6 @@ const interestCards = {
     desc: "Track your cycle, ovulation, and fertility insights.",
     icon: "📅",
   },
-  "Pregnancy Support": {
-    desc: "Tips and resources to guide your pregnancy journey.",
-    icon: "✨",
-  },
   "Fitness & Nutrition": {
     desc: "Stay active and eat well with personalized tips.",
     icon: "🔩",
@@ -24,33 +20,22 @@ const interestCards = {
     desc: "Reminders for self-exams and health checks.",
     icon: "❤︎",
   },
-  "Menopause Guidance": {
-    desc: "Navigate changes with expert advice and support.",
-    icon: "🩺",
-  },
-  "Community & Support": {
-    desc: "Join safe spaces and connect with peers.",
-    icon: "🤝🏻",
-  },
   "Safety Features": {
     desc: "Track safety and access help when needed.",
     icon: "🛡️",
   },
 };
 
-export default function Dashboard({ lifeStage, interests }) {
+export default function Dashboard({ interests }) {
   const { interests: selectedInterests } = useInterests();
   const navigate = useNavigate();
 
   // map interest titles (exact text) to routes
   const interestToRoute = {
     "Period & Fertility Tracking": "/modules/period",
-    "Pregnancy Support": "/modules/pregnancy",
     "Fitness & Nutrition": "/modules/fitness",
     "Mental Wellness": "/modules/mental",
     "Breast Health": "/modules/breast",
-    "Menopause Guidance": "/modules/menopause",
-    "Community & Support": "/modules/community",
     "Safety Features": "/modules/safety",
   };
 
@@ -116,14 +101,6 @@ export default function Dashboard({ lifeStage, interests }) {
         <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition">
           + Add More Features
         </button>
-      </div>
-
-      {/* Life Stage Card */}
-      <div className="mb-6 bg-gray-800 dark:bg-gray-800 p-6 rounded-xl shadow">
-        <h2 className="font-semibold text-lg mb-2">🌸 Life Stage</h2>
-        <p className="text-gray-700 dark:text-gray-300">
-          You selected: <span className="font-bold">{lifeStage}</span>
-        </p>
       </div>
 
       {/* Interest Cards */}

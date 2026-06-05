@@ -11,3 +11,4 @@ export const updateCycle = (id, data) =>
 
 export const deleteCycle = (id) =>
   api.delete(`/cycles/${id}`);
+

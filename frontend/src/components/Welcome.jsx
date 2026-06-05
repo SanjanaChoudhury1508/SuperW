@@ -22,7 +22,6 @@ export default function Welcome({ onNext }) {
 
       {/* Steps */}
       <ul className="text-left text-gray-300 mb-6 space-y-2">
-        <li>✔️ Choose your life stage</li>
         <li>✔️ Select your wellness interests</li>
         <li>✔️ Get your personalized dashboard</li>
       </ul>

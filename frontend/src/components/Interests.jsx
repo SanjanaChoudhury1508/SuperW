@@ -2,12 +2,9 @@ import { useInterests } from "../context/InterestsContext";
 
 const options = [
   "Period & Fertility Tracking",
-  "Pregnancy Support",
   "Fitness & Nutrition",
   "Mental Wellness",
   "Breast Health",
-  "Menopause Guidance",
-  "Community & Support",
   "Safety Features",
 ];
 

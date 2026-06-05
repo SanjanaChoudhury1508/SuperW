@@ -1,28 +1,27 @@
 // src/App.jsx
 import { useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome";
-import LifeStage from "./components/LifeStage";
 import Interests from "./components/Interests";
 import Dashboard from "./components/Dashboard";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
 
 // <-- IMPORTANT: import your module page(s) here
 import PeriodPage from "./modules/period/PeriodDashboard.jsx";
 import FitnessDashboard from "./modules/fitness/FitnessDashboard.jsx";
 import BreastDashboard from "./modules/breast/BreastDashboard";
-import PregnancyModule from "./modules/pregnancy";
 import MindDashboard from "./modules/mental/MindDashboard";
-import MenopauseDashboard from "./modules/menopause";
-import CommunityDashboard from "./modules/community";
 import SafeGuardDashboard from "./modules/safety";
 
 export default function App() {
   const navigate = useNavigate();
 
   // keep your existing state (components still expect these props)
-  const [lifeStage, setLifeStage] = useState("");
   const [interests, setInterests] = useState([]);
 
   // navigation helpers used as the onNext/onBack callbacks
@@ -31,80 +30,68 @@ export default function App() {
   return (
 
     <Routes>
-      
-      {/* Welcome (step 1) */}
-      <Route
-        path="/"
-        element={
-          <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
-            <Welcome onNext={() => goTo("/lifestage")} />
-          </div>
-        }
-      />
 
-      {/* Life stage (step 2) */}
-      <Route
-        path="/lifestage"
-        element={
-          <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
-            <LifeStage
-              onNext={() => goTo("/interests")}
-              onBack={() => goTo("/")}
-              lifeStage={lifeStage}
-              setLifeStage={setLifeStage}
-            />
-          </div>
-        }
-      />
+  {/* Auth */}
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+  <Route
+  path="/forgot-password"
+  element={<ForgotPassword />}
+/>
 
-      {/* Interests (step 3) */}
-      <Route
-        path="/interests"
-        element={
-          <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
-            <Interests
-              onBack={() => goTo("/lifestage")}
-              onComplete={() => goTo("/dashboard")}
-              interests={interests}
-              setInterests={setInterests}
-            />
-          </div>
-        }
-      />
+  {/* Onboarding */}
+  <Route
+    path="/"
+    element={
+      <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
+        <Welcome onNext={() => goTo("/interests")} />
+      </div>
+    }
+  />
 
-      {/* Dashboard (step 4) */}
-      <Route
-        path="/dashboard"
-        element={
-          <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
-            <Dashboard lifeStage={lifeStage} interests={interests} />
-          </div>
-        }
-      />
+  <Route
+    path="/interests"
+    element={
+      <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
+        <Interests
+          onBack={() => goTo("/")}
+          onComplete={() => goTo("/dashboard")}
+          interests={interests}
+          setInterests={setInterests}
+        />
+      </div>
+    }
+  />
 
-      {/* Profile Section */}
-      <Route path="/profile" element={<Profile />} />
+  {/* Main Dashboard */}
+  <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
+        <Dashboard
+          interests={interests}
+        />
+      </div>
+    </ProtectedRoute>
+  }
+/>
 
-      {/* Settings Section */}
-      <Route path="/settings" element={<Settings />} />
+  {/* User */}
+  <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+  <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 
-      {/* Module pages */}
-      <Route
-        path="/modules/period"
-        element={<PeriodPage />}
-      />
-      <Route path="/modules/fitness" element={<FitnessDashboard />} />
-      <Route path="/modules/breast" element={<BreastDashboard />} />
-      <Route path="/modules/pregnancy" element={<PregnancyModule />} />
-      <Route path="/modules/mental" element={<MindDashboard/>}/>
-      <Route path="/modules/menopause" element={<MenopauseDashboard/>}/>
-      <Route path="/modules/community" element={<CommunityDashboard/>}/>
-      <Route path="/modules/safety" element={<SafeGuardDashboard />} />
+  {/* Modules */}
+  <Route path="/modules/period" element={<ProtectedRoute><PeriodPage /></ProtectedRoute>} />
+  <Route path="/modules/fitness" element={<ProtectedRoute><FitnessDashboard /></ProtectedRoute>} />
+  <Route path="/modules/breast" element={<ProtectedRoute><BreastDashboard /></ProtectedRoute>} />
+  <Route path="/modules/mental" element={<ProtectedRoute><MindDashboard /></ProtectedRoute>} />
+  <Route path="/modules/safety" element={<ProtectedRoute><SafeGuardDashboard /></ProtectedRoute>} />
 
-      {/* fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+  {/* Fallback */}
+  <Route path="*" element={<Navigate to="/" replace />} />
 
-    </Routes>
+</Routes>
     
   );
 }
