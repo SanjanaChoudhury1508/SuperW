@@ -47,7 +47,7 @@ export default function Dashboard({ interests }) {
       {/* Header with Settings + Profile */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Hey there! 👋</h1>
+          <h1 className="text-2xl font-bold mb-1">Hey there! </h1>
           <p className="text-gray-600 dark:text-gray-100/60">
             Here’s your personalized wellness overview
           </p>
@@ -106,7 +106,7 @@ export default function Dashboard({ interests }) {
       {/* Interest Cards */}
       {selectedInterests.length > 0 && (
         <div className="mb-6">
-          <h2 className="font-semibold text-lg mb-4">⭐ Your Wellness Modules</h2>
+          <h2 className="font-semibold text-lg mb-4">Your Wellness Modules</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {selectedInterests.map((interest) => (
               <div
