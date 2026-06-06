@@ -23,8 +23,8 @@ model User {
 
   cycles        Cycle[]
   moods         MoodLog[]
-  workouts      Workout[]
-  meals         Meal[]
+  workouts      WorkoutLog[]
+  meals         MealLog[]
   symptomLogs   SymptomLog[]
 }
 
@@ -50,23 +50,21 @@ model MoodLog {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Workout {
+model WorkoutLog {
   id        String   @id @default(uuid())
   userId    String
-  title     String
+  workout   String
   duration  Int
-  calories  Int?
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Meal {
+model MealLog {
   id        String   @id @default(uuid())
   userId    String
-  mealType  String
+  meal      String
   calories  Int?
-  notes     String?
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
