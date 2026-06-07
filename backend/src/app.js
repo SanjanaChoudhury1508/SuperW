@@ -7,6 +7,8 @@ const symptomRoutes = require("./routes/symptomRoutes");
 const moodRoutes = require("./routes/moodRoutes");
 const workoutRoutes = require("./routes/workoutRoutes");
 const mealRoutes = require("./routes/mealRoutes");
+const breastRoutes = require("./routes/breastRoutes");
+const safetyRoutes = require("./routes/safetyRoutes");
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use("/api/symptoms", symptomRoutes);
 app.use("/api/moods", moodRoutes);
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/meals", mealRoutes);
+app.use("/api/breast", breastRoutes);
+app.use("/api/safety", safetyRoutes);
 
 app.get("/", (req, res) => {
   res.json({
