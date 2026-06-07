@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 export default function Profile() {
   const menuItems = [
     "Personal Info",
@@ -17,7 +18,6 @@ export default function Profile() {
 
   const preferences = [
     { label: "Daily Health Reminders", defaultChecked: true },
-    { label: "Community Notifications", defaultChecked: true },
     { label: "Share Anonymous Data for Research", defaultChecked: false },
   ];
 
@@ -27,13 +27,21 @@ export default function Profile() {
     { label: "Download Health Data", action: "Export" },
   ];
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0d0d0f] text-gray-100 px-6 py-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
-
         {/* Sidebar */}
         <aside className="space-y-4">
-
           {/* Avatar card */}
           <div className="p-6 bg-[#141418] border border-white/[0.06] rounded-2xl text-center">
             <div className="relative inline-block">
@@ -45,7 +53,9 @@ export default function Profile() {
               <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-400 border-2 border-[#141418]" />
             </div>
 
-            <h3 className="mt-3 font-semibold text-white">Sanjana</h3>
+            <h3 className="mt-3 font-semibold text-white">
+              {user?.name || "User"}
+            </h3>
             <p className="text-xs text-gray-500 mt-0.5">Member since 2025</p>
 
             <button className="mt-4 w-full px-4 py-2 rounded-lg bg-[#1e1e24] border border-white/[0.08] text-sm text-gray-300 hover:text-white hover:bg-[#26262e] transition-all duration-150">
@@ -55,7 +65,9 @@ export default function Profile() {
 
           {/* Nav menu */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-4">
-            <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">Menu</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">
+              Menu
+            </div>
             <nav className="space-y-0.5">
               {menuItems.map((item, i) => (
                 <button
@@ -71,16 +83,16 @@ export default function Profile() {
               ))}
             </nav>
           </div>
-
         </aside>
 
         {/* Main Content */}
         <section className="md:col-span-3 space-y-5">
-
           {/* Personal Info */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-base font-semibold text-white">Personal Information</h2>
+              <h2 className="text-base font-semibold text-white">
+                Personal Information
+              </h2>
               <button className="text-xs text-gray-400 hover:text-white border border-white/[0.08] bg-[#1e1e24] px-3 py-1.5 rounded-lg transition-all duration-150">
                 Edit
               </button>
@@ -88,14 +100,21 @@ export default function Profile() {
 
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                { label: "Full Name", value: "Sanjana" },
-                { label: "Email", value: "user@email.com" },
+                { label: "Full Name", value: user?.name || "User" },
+                { label: "Email", value: user?.email || "Not Available" },
                 { label: "Age", value: "26" },
                 { label: "Location", value: "India" },
               ].map((field) => (
-                <div key={field.label} className="p-4 bg-[#1a1a1f] border border-white/[0.05] rounded-xl">
-                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-1.5">{field.label}</div>
-                  <div className="text-sm text-gray-200 font-medium">{field.value}</div>
+                <div
+                  key={field.label}
+                  className="p-4 bg-[#1a1a1f] border border-white/[0.05] rounded-xl"
+                >
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-1.5">
+                    {field.label}
+                  </div>
+                  <div className="text-sm text-gray-200 font-medium">
+                    {field.value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -103,13 +122,22 @@ export default function Profile() {
 
           {/* Health Overview */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Health Overview</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Health Overview
+            </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {healthStats.map((stat) => (
-                <div key={stat.label} className="p-4 bg-[#1a1a1f] border border-white/[0.05] rounded-xl text-center">
-                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-1.5">{stat.label}</div>
-                  <div className="text-sm font-semibold text-white">{stat.value}</div>
+                <div
+                  key={stat.label}
+                  className="p-4 bg-[#1a1a1f] border border-white/[0.05] rounded-xl text-center"
+                >
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-1.5">
+                    {stat.label}
+                  </div>
+                  <div className="text-sm font-semibold text-white">
+                    {stat.value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -117,7 +145,9 @@ export default function Profile() {
 
           {/* Preferences */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Preferences</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Preferences
+            </h2>
 
             <div className="space-y-3">
               {preferences.map((pref) => (
@@ -138,7 +168,9 @@ export default function Profile() {
 
           {/* Privacy & Security */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Privacy & Security</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Privacy & Security
+            </h2>
 
             <div className="space-y-3">
               {privacyActions.map((item) => (
@@ -154,7 +186,6 @@ export default function Profile() {
               ))}
             </div>
           </div>
-
         </section>
       </div>
     </div>
