@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Profile() {
   const menuItems = [
     "Personal Info",
@@ -28,6 +29,7 @@ export default function Profile() {
   ];
 
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -39,6 +41,13 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-[#0d0d0f] text-gray-100 px-6 py-8">
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="mb-6 px-4 py-2 bg-[#1a1a1f] hover:bg-[#222228] border border-white/[0.07] rounded-lg text-sm text-gray-400 hover:text-gray-200 transition-all duration-200 flex items-center gap-2 w-fit"
+      >
+        <span className="text-gray-500">←</span>
+        Back to Dashboard
+      </button>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
         {/* Sidebar */}
         <aside className="space-y-4">

@@ -1,7 +1,7 @@
 // src/components/Dashboard.jsx
 import { useNavigate } from "react-router-dom";
-import { useInterests } from "../context/InterestsContext.jsx";
 import { FiUser, FiSettings } from "react-icons/fi";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const interestCards = {
   "Period & Fertility Tracking": {
@@ -27,7 +27,8 @@ const interestCards = {
 };
 
 export default function Dashboard({ interests }) {
-  const { interests: selectedInterests } = useInterests();
+  const selectedInterests =
+  JSON.parse(localStorage.getItem("interests")) || [];
   const navigate = useNavigate();
 
   // map interest titles (exact text) to routes
@@ -55,6 +56,7 @@ export default function Dashboard({ interests }) {
      
         <div className="flex gap-3">
 
+
   {/* Profile */}
   <button
     onClick={() => navigate("/profile")}
@@ -70,6 +72,22 @@ export default function Dashboard({ interests }) {
   >
     <FiSettings size={20} />
   </button>
+
+  {/* Logout */}
+  <button
+  onClick={() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("interests");
+
+    navigate("/login");
+  }}
+  className="px-3 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm"
+>
+  <RiLogoutBoxRFill size={20} />
+</button>
+
+  
 
 </div>
       </div>
@@ -98,7 +116,11 @@ export default function Dashboard({ interests }) {
 
       {/* Add More Features Button */}
       <div className="flex justify-end mb-6">
-        <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+        
+        <button
+          onClick={() => navigate("/interests")}
+          className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+        >
           + Add More Features
         </button>
       </div>

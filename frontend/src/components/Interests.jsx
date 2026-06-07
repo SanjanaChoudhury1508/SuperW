@@ -13,13 +13,12 @@ export default function Interests({ onBack, onComplete }) {
 
   const toggleInterest = (item) => {
     setInterests((prev) =>
-      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
+      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item],
     );
   };
 
   return (
     <div className="max-w-2xl w-full bg-gray-800 p-8 rounded-2xl shadow-lg text-center">
-
       {/* Title */}
       <h2 className="text-2xl font-bold mb-6 text-white">
         What interests you most?
@@ -46,9 +45,7 @@ export default function Interests({ onBack, onComplete }) {
       {/* Selected interests */}
       {interests.length > 0 && (
         <div className="mt-6 bg-gray-700 p-4 rounded-xl">
-          <h3 className="font-semibold text-white mb-3">
-            You have selected:
-          </h3>
+          <h3 className="font-semibold text-white mb-3">You have selected:</h3>
 
           <ul className="flex flex-wrap gap-2 justify-center">
             {interests.map((interest) => (
@@ -65,7 +62,6 @@ export default function Interests({ onBack, onComplete }) {
 
       {/* Navigation buttons */}
       <div className="flex justify-between mt-6">
-
         <button
           onClick={onBack}
           className="text-gray-100/60 hover:text-white transition"
@@ -74,15 +70,17 @@ export default function Interests({ onBack, onComplete }) {
         </button>
 
         <button
-          onClick={onComplete}
+          onClick={() => {
+            localStorage.setItem("interests", JSON.stringify(interests));
+
+            onComplete();
+          }}
           disabled={interests.length === 0}
           className="bg-pink-500 hover:bg-pink-600 transition px-6 py-2 rounded-lg text-white disabled:opacity-50"
         >
           Complete Setup ✓
         </button>
-
       </div>
-
     </div>
   );
 }

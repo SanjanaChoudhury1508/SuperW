@@ -21,10 +21,10 @@ import SafeGuardDashboard from "./modules/safety";
 export default function App() {
   const navigate = useNavigate();
 
-  // keep your existing state (components still expect these props)
-  const [interests, setInterests] = useState([]);
+  const [interests, setInterests] = useState(
+  JSON.parse(localStorage.getItem("interests")) || []
+);
 
-  // navigation helpers used as the onNext/onBack callbacks
   const goTo = (path) => navigate(path);
 
   return (
@@ -44,7 +44,7 @@ export default function App() {
     path="/"
     element={
       <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
-        <Welcome onNext={() => goTo("/interests")} />
+        <Welcome onNext={() => goTo("/login")} />
       </div>
     }
   />
@@ -52,6 +52,7 @@ export default function App() {
   <Route
     path="/interests"
     element={
+       <ProtectedRoute>
       <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center p-6">
         <Interests
           onBack={() => goTo("/")}
@@ -60,6 +61,7 @@ export default function App() {
           setInterests={setInterests}
         />
       </div>
+      </ProtectedRoute>
     }
   />
 

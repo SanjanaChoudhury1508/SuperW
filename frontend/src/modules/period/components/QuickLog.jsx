@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { createSymptom } from "../../../api/symptomApi";
+import { FiSmile, FiActivity, FiDroplet, FiZap } from "react-icons/fi";
 
 const quickOptions = [
-  { id: "mood", label: "Mood", icon: "😊" },
-  { id: "cramp", label: "Cramps", icon: "💢" },
-  { id: "flow", label: "Flow", icon: "💧" },
-  { id: "energy", label: "Energy", icon: "⚡" },
+  { id: "mood", label: "Mood", icon: FiSmile },
+  { id: "cramp", label: "Cramps", icon: FiActivity },
+  { id: "flow", label: "Flow", icon: FiDroplet },
+  { id: "energy", label: "Energy", icon: FiZap },
 ];
 
 export default function QuickLog() {
@@ -14,9 +15,7 @@ export default function QuickLog() {
 
   const toggle = (id) => {
     setSelected((prev) =>
-      prev.includes(id)
-        ? prev.filter((x) => x !== id)
-        : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -28,8 +27,8 @@ export default function QuickLog() {
         selected.map((symptom) =>
           createSymptom({
             symptom,
-          })
-        )
+          }),
+        ),
       );
 
       alert("Symptoms logged successfully");
@@ -61,7 +60,7 @@ export default function QuickLog() {
               }`}
             >
               <span className="text-lg leading-none mb-1">
-                {opt.icon}
+                <opt.icon size={20} />
               </span>
               <span className="text-xs">{opt.label}</span>
             </button>

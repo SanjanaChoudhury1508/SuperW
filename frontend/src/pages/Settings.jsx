@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 export default function Settings() {
   const menuItems = [
     "General",
@@ -38,14 +39,24 @@ export default function Settings() {
     { label: "Delete specific records", action: "Manage" },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-[#0d0d0f] text-gray-100 px-6 py-8">
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="mb-6 px-4 py-2 bg-[#1a1a1f] hover:bg-[#222228] border border-white/[0.07] rounded-lg text-sm text-gray-400 hover:text-gray-200 transition-all duration-200 flex items-center gap-2 w-fit"
+      >
+        <span className="text-gray-500">←</span>
+        Back to Dashboard
+      </button>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
-
         {/* Sidebar */}
         <aside>
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-4 sticky top-8">
-            <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">Settings Menu</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">
+              Settings Menu
+            </div>
             <nav className="space-y-0.5">
               {menuItems.map((item, i) => (
                 <button
@@ -65,16 +76,20 @@ export default function Settings() {
 
         {/* Main */}
         <section className="md:col-span-3 space-y-5">
-
           {/* General */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">General Settings</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              General Settings
+            </h2>
 
             <div className="space-y-3">
-
               <div className="flex items-center justify-between py-3 border-b border-white/[0.04]">
                 <span className="text-sm text-gray-300">Dark Mode</span>
-                <input type="checkbox" defaultChecked className="w-4 h-4 accent-indigo-500 cursor-pointer" />
+                <input
+                  type="checkbox"
+                  defaultChecked
+                  className="w-4 h-4 accent-indigo-500 cursor-pointer"
+                />
               </div>
 
               <div className="flex items-center justify-between py-3 border-b border-white/[0.04]">
@@ -92,19 +107,22 @@ export default function Settings() {
                   <option>GMT+5:30</option>
                 </select>
               </div>
-
             </div>
           </div>
 
           {/* Notifications */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Notifications</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Notifications
+            </h2>
             <div className="space-y-0">
               {notifications.map((item, i) => (
                 <div
                   key={item.label}
                   className={`flex items-center justify-between py-3 ${
-                    i < notifications.length - 1 ? "border-b border-white/[0.04]" : ""
+                    i < notifications.length - 1
+                      ? "border-b border-white/[0.04]"
+                      : ""
                   }`}
                 >
                   <span className="text-sm text-gray-300">{item.label}</span>
@@ -142,13 +160,17 @@ export default function Settings() {
 
           {/* Security */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Security</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Security
+            </h2>
             <div className="space-y-0">
               {securityActions.map((item, i) => (
                 <div
                   key={item.label}
                   className={`flex items-center justify-between py-3 ${
-                    i < securityActions.length - 1 ? "border-b border-white/[0.04]" : ""
+                    i < securityActions.length - 1
+                      ? "border-b border-white/[0.04]"
+                      : ""
                   }`}
                 >
                   <span className="text-sm text-gray-300">{item.label}</span>
@@ -162,13 +184,17 @@ export default function Settings() {
 
           {/* Health Data */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Health Data</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Health Data
+            </h2>
             <div className="space-y-0">
               {healthActions.map((item, i) => (
                 <div
                   key={item.label}
                   className={`flex items-center justify-between py-3 ${
-                    i < healthActions.length - 1 ? "border-b border-white/[0.04]" : ""
+                    i < healthActions.length - 1
+                      ? "border-b border-white/[0.04]"
+                      : ""
                   }`}
                 >
                   <span className="text-sm text-gray-300">{item.label}</span>
@@ -182,13 +208,17 @@ export default function Settings() {
 
           {/* Accessibility */}
           <div className="bg-[#141418] border border-white/[0.06] rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-white mb-5">Accessibility</h2>
+            <h2 className="text-base font-semibold text-white mb-5">
+              Accessibility
+            </h2>
             <div className="space-y-0">
               {accessibility.map((item, i) => (
                 <div
                   key={item.label}
                   className={`flex items-center justify-between py-3 ${
-                    i < accessibility.length - 1 ? "border-b border-white/[0.04]" : ""
+                    i < accessibility.length - 1
+                      ? "border-b border-white/[0.04]"
+                      : ""
                   }`}
                 >
                   <span className="text-sm text-gray-300">{item.label}</span>
@@ -204,7 +234,9 @@ export default function Settings() {
 
           {/* Account — danger zone */}
           <div className="bg-[#141418] border border-red-500/10 rounded-2xl p-6">
-            <h2 className="text-base font-semibold text-red-400/80 mb-5">Account</h2>
+            <h2 className="text-base font-semibold text-red-400/80 mb-5">
+              Account
+            </h2>
             <div className="space-y-0">
               {[
                 { label: "Deactivate account", action: "Deactivate" },
@@ -224,7 +256,6 @@ export default function Settings() {
               ))}
             </div>
           </div>
-
         </section>
       </div>
     </div>

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// ── Axios instance ─────────────────────────────────────────────────────────────
+// ── Axios instance ──
 const api = axios.create({
   baseURL: "http://localhost:5000",
   headers: { "Content-Type": "application/json" },
 });
 
-// ── Helpers ────────────────────────────────────────────────────────────────────
+// ── Helpers ──
 function Logo() {
   return (
     <div className="flex items-center gap-3 justify-center">
@@ -82,7 +82,7 @@ function InputField({ label, id, type = "text", value, onChange, placeholder, er
   );
 }
 
-// ── Login ──────────────────────────────────────────────────────────────────────
+// ── Login ──
 export default function Login() {
   const navigate = useNavigate();
 
@@ -98,7 +98,7 @@ export default function Login() {
       [field]: e.target.type === "checkbox" ? e.target.checked : e.target.value,
     }));
 
-  // ── Client-side validation ──────────────────────────────────────────────────
+  // ── Client-side validation ──
   function validate() {
     const errs = {};
     if (!form.email.trim()) errs.email = "Email is required.";
@@ -110,13 +110,11 @@ export default function Login() {
     return errs;
   }
 
-  // ── Parse backend validation errors ────────────────────────────────────────
-  // Handles common shapes: { message }, { errors: [{ field, msg }] }, { errors: { email: "..." } }
+  // ── Parse backend validation errors ───
   function parseBackendErrors(err) {
     const data = err.response?.data;
     if (!data) return { general: "Something went wrong. Please try again." };
 
-    // Array of field errors: [{ field: "email", msg: "..." }]
     if (Array.isArray(data.errors)) {
       const fields = {};
       data.errors.forEach(({ field, msg, message }) => {
@@ -125,16 +123,14 @@ export default function Login() {
       if (Object.keys(fields).length) return { fields };
     }
 
-    // Object of field errors: { email: "...", password: "..." }
     if (data.errors && typeof data.errors === "object" && !Array.isArray(data.errors)) {
       return { fields: data.errors };
     }
 
-    // Single message
     return { general: data.message || "Login failed. Please try again." };
   }
 
-  // ── Submit ──────────────────────────────────────────────────────────────────
+  // ── Submit ──
   async function handleSubmit(e) {
     e.preventDefault();
     setServerError("");
@@ -153,11 +149,11 @@ export default function Login() {
         password: form.password,
       });
 
-      // ── Persist session ────────────────────────────────────────────────────
+      // ── Persist session ───
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      navigate("/dashboard");
+      navigate("/interests");
     } catch (err) {
       const parsed = parseBackendErrors(err);
       if (parsed.fields) setFieldErrors(parsed.fields);
