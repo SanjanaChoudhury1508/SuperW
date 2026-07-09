@@ -5,6 +5,7 @@ import WellnessTools from "./components/WellnessTools";
 import Support from "./components/Support";
 import Settings from "./components/Settings";
 import { useNavigate } from "react-router-dom";
+import MentalChatbot from "./components/MentalChatbot";
 
 export default function MindDashboard() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ export default function MindDashboard() {
           <WellnessTools />
           <Support />
           <Settings />
+          <MentalChatbot />
         </main>
       </div>
     </div>

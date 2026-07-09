@@ -42,8 +42,52 @@ const getMoods = async (req, res) => {
     });
   }
 };
+const analyzeMood = async (req, res) => {
+  const { message } = req.body;
+
+  let mood = "Calm";
+
+  const text = message.toLowerCase();
+
+  if (
+    text.includes("stress") ||
+    text.includes("anxious") ||
+    text.includes("overwhelmed")
+  ) {
+    mood = "Stressed";
+  } else if (
+    text.includes("happy") ||
+    text.includes("excited")
+  ) {
+    mood = "Happy";
+  } else if (
+    text.includes("sad") ||
+    text.includes("cry")
+  ) {
+    mood = "Sad";
+  } else if (
+    text.includes("tired") ||
+    text.includes("exhausted")
+  ) {
+    mood = "Tired";
+  }
+
+  const moodLog = await prisma.moodLog.create({
+  data: {
+    userId: req.user.userId,
+    mood,
+    journal: message,
+  },
+});
+
+  res.json({
+    mood,
+    response: `You seem to be feeling ${mood}. Take care of yourself and don't hesitate to rest if needed.`,
+  });
+};
 
 module.exports = {
   createMood,
   getMoods,
-};
+  analyzeMood,
+}
