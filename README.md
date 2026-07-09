@@ -2,7 +2,7 @@
 
 A modern full-stack wellness web application designed to support women through different aspects of health and well-being. The platform provides personalized dashboards and specialized wellness tools covering menstrual health, fitness, mental wellness, breast health, and personal safety.
 
-Users can select their wellness interests, and the system dynamically generates a customized dashboard with relevant health modules.
+Users can register, log in, select their wellness interests, and access a personalized dashboard with modules tailored to their needs.
 
 ---
 
@@ -10,35 +10,32 @@ Users can select their wellness interests, and the system dynamically generates 
 
 This project is a full-stack women's wellness platform that combines multiple health and wellness modules into a personalized user experience.
 
-Users can register, log in, select wellness interests, and access specialized health dashboards tailored to their needs. The platform integrates frontend and backend technologies to provide secure authentication, personalized experiences, and persistent health data storage.
+Users can:
 
-Current capabilities include:
+* Register and log in securely
+* Select wellness interests
+* Access personalized dashboards
+* Track health-related information
+* Store wellness data securely
+* Navigate seamlessly between multiple wellness modules
+* Interact with a mental wellness chatbot for mood analysis
 
-* User registration and authentication
-* Personalized dashboard generation
-* Interest-based module selection
-* Secure API integration
-* PostgreSQL database storage
-* Prisma ORM data management
-* Protected routes and session management
-* User-specific health and wellness tracking
-
-The project demonstrates both frontend and backend development, including database persistence, API integration, authentication, and modular application design.
+The application demonstrates both frontend and backend development using modern web technologies, including authentication, REST APIs, PostgreSQL, Prisma ORM, and persistent data storage.
 
 ---
 
 # Project Overview
 
-Women's health involves many different aspects including reproductive health, physical fitness, mental well-being, breast health, and personal safety.
+Women's health involves many interconnected aspects including reproductive health, physical fitness, mental well-being, breast health, nutrition, and personal safety.
 
-This project brings these services together into a single personalized wellness platform where users can:
+This platform brings these services together into a single personalized wellness application where users can:
 
 * Choose wellness interests
 * Access a customized dashboard
-* Use specialized wellness modules
-* Track health-related information
-* Navigate seamlessly between modules
-* Manage profile and settings
+* Use multiple specialized wellness modules
+* Track health information
+* View personalized wellness records
+* Manage profile and account settings
 
 ---
 
@@ -56,51 +53,69 @@ This project brings these services together into a single personalized wellness 
 
 ## Personalized Dashboard
 
-Users receive a dashboard customized according to their selected interests.
+The dashboard is dynamically generated based on the user's selected interests.
 
-Dashboard features include:
+Dashboard includes:
 
+* Interest-based wellness modules
 * Active Modules Overview
 * Wellness Score
 * Tracking Streak
-* Quick Navigation to Modules
+* Quick Navigation
+* Persistent interests using Local Storage
 
 ---
 
-## Wellness Modules
+# Wellness Modules
 
-### Period & Fertility Tracking
+## Period & Fertility Tracking
 
 * Cycle Tracking
 * Period Logging
-* Symptom Tracking
+* Symptom Logging
 * Cycle Calendar
+* Cycle Progress Visualization
 * Fertility Insights
 
-### Fitness & Nutrition
+---
+
+## Fitness & Nutrition
 
 * Workout Logging
+* Workout Planner
 * Meal Tracking
+* Nutrition Monitoring
 * Hydration Monitoring
 * Wellness Insights
 
-### Mental Wellness
+---
+
+## Mental Wellness
 
 * Mood Journaling
 * Mood Tracking
+* Mental Wellness Chatbot
+* Automatic Mood Detection
+* Mood History
 * Stress Monitoring
 * Wellness Resources
 
-### Breast Health
+---
+
+## Breast Health
 
 * Self-Exam Tracking
 * Symptom Logging
+* Quick Health Logging
 * Screening Reminders
-* Health Insights
+* Breast Health Insights
 
-### Safety Module
+---
+
+## Safety Module
 
 * Safety Check-ins
+* Safety Status Tracking
 * Emergency Support Features
 * Personal Safety Resources
 * Safety Awareness Tools
@@ -109,36 +124,47 @@ Dashboard features include:
 
 # Additional Pages
 
-## Profile Page
+## Profile
 
-Users can manage personal information and preferences including:
+Users can manage:
 
-* Account Information
+* Personal Information
 * Health Overview
 * Wellness Preferences
 * Privacy Settings
 * Security Settings
 
-## Settings Page
+---
 
-The settings panel allows users to manage platform preferences such as:
+## Settings
+
+Users can configure:
 
 * Notifications
 * Privacy Options
-* Security Settings
+* Security Preferences
 * Health Data Management
-* Accessibility Preferences
+* Accessibility Settings
 
 ---
 
 # User Flow
 
 1. Welcome Screen
+
 2. User Registration / Login
+
 3. Interest Selection
+
 4. Personalized Dashboard
-5. Wellness Module Navigation
-6. Health Data Tracking
+
+5. Navigate to Wellness Modules
+
+6. Track Wellness Information
+
+7. Mental Wellness Chatbot
+
+8. View Personalized History
 
 ---
 
@@ -151,25 +177,41 @@ The settings panel allows users to manage platform preferences such as:
 * Tailwind CSS
 * React Router
 
+---
+
 ## Backend
 
 * Node.js
 * Express.js
+
+---
 
 ## Database
 
 * PostgreSQL
 * Prisma ORM
 
+---
+
 ## Authentication
 
 * JWT Authentication
 
+---
+
+## API Communication
+
+* REST APIs
+* Axios
+
+---
+
 ## Libraries
 
-* Axios
 * React Icons
 * Lucide React
+
+---
 
 ## Development Tools
 
@@ -186,7 +228,7 @@ The application stores user-specific wellness data using PostgreSQL and Prisma.
 
 ### User
 
-Stores user profile and authentication information.
+Stores authentication details and user profile information.
 
 ### Cycle
 
@@ -194,11 +236,11 @@ Stores menstrual cycle records.
 
 ### SymptomLog
 
-Stores cycle-related symptoms.
+Stores period symptom entries.
 
 ### MoodLog
 
-Stores mood journal entries.
+Stores mood journal entries and chatbot mood analysis.
 
 ### WorkoutLog
 
@@ -206,7 +248,7 @@ Stores workout records.
 
 ### MealLog
 
-Stores nutrition and meal records.
+Stores meal records.
 
 ### BreastLog
 
@@ -214,7 +256,32 @@ Stores breast health logs and symptom records.
 
 ### SafetyLog
 
-Stores safety check-ins and related notes.
+Stores safety check-ins and notes.
+
+---
+
+# Architecture
+
+The application follows a full-stack client-server architecture.
+
+```
+React Frontend
+        │
+        ▼
+React Components
+        │
+        ▼
+Axios API Calls
+        │
+        ▼
+Express REST APIs
+        │
+        ▼
+Prisma ORM
+        │
+        ▼
+PostgreSQL Database
+```
 
 ---
 
@@ -224,30 +291,16 @@ Stores safety check-ins and related notes.
 frontend/
 │
 ├── src/
+│   ├── api/
 │   ├── components/
-│   │   ├── Dashboard.jsx
-│   │   ├── Interests.jsx
-│   │   ├── Welcome.jsx
-│   │   └── ProtectedRoute.jsx
-│   │
 │   ├── context/
-│   │   └── InterestsContext.jsx
-│   │
 │   ├── modules/
 │   │   ├── period/
 │   │   ├── fitness/
 │   │   ├── mental/
 │   │   ├── breast/
 │   │   └── safety/
-│   │
 │   ├── pages/
-│   │   ├── Login.jsx
-│   │   ├── Register.jsx
-│   │   ├── ForgotPassword.jsx
-│   │   ├── Profile.jsx
-│   │   └── Settings.jsx
-│   │
-│   ├── api/
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
@@ -255,13 +308,14 @@ frontend/
 backend/
 │
 ├── prisma/
+│   ├── migrations/
 │   └── schema.prisma
 │
 ├── src/
-│   ├── controllers/
-│   ├── routes/
-│   ├── middleware/
 │   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── routes/
 │   ├── app.js
 │   └── server.js
 │
@@ -272,7 +326,7 @@ backend/
 
 # Installation
 
-## Clone the Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/SanjanaChoudhury1508/SuperW.git
@@ -292,7 +346,7 @@ npm run dev
 
 Frontend runs on:
 
-```text
+```
 http://localhost:5173
 ```
 
@@ -314,19 +368,19 @@ JWT_SECRET=your_secret_key
 PORT=5000
 ```
 
-Generate Prisma client:
+Generate Prisma Client:
 
 ```bash
 npx prisma generate
 ```
 
-Run migrations:
+Run Database Migrations:
 
 ```bash
 npx prisma migrate dev
 ```
 
-Start backend server:
+Start Backend Server:
 
 ```bash
 npm start
@@ -334,8 +388,14 @@ npm start
 
 Backend runs on:
 
-```text
+```
 http://localhost:5000
+```
+
+View database:
+
+```bash
+npx prisma studio
 ```
 
 ---
@@ -344,46 +404,51 @@ http://localhost:5000
 
 ## Completed
 
-* Authentication System
+* User Authentication
 * User Registration & Login
 * JWT Authentication
 * Protected Routes
-* Interest-Based Personalization
-* Dashboard Navigation
+* Interest-Based Dashboard Personalization
+* Local Storage Persistence
+* REST API Integration
 * Period Tracking Module
 * Fitness & Nutrition Module
 * Mental Wellness Module
+* Mental Wellness Chatbot
 * Breast Health Module
 * Safety Module
 * Profile Page
 * Settings Page
 * PostgreSQL Integration
 * Prisma ORM
-* CRUD APIs
+* CRUD Operations
+* Axios API Integration
 * Data Persistence
 
 ---
 
 ## Planned Improvements
 
-* UI Polishing
-* Responsive Design Enhancements
-* Advanced Analytics
-* Notifications & Reminders
-* Health Insights Dashboard
-* Deployment
+* Responsive UI Improvements
+* Dashboard Analytics
+* Push Notifications
+* Appointment Scheduling
+* AI-powered Mental Health Assistant
 * Mobile Optimization
+* Cloud Deployment
 
 ---
 
 # Future Enhancements
 
-* Data Visualization Charts
+* AI-powered Wellness Assistant
+* Advanced Analytics Dashboard
 * Personalized Health Insights
 * Push Notifications
-* AI-Assisted Wellness Suggestions
 * Appointment Scheduling
 * Health Report Generation
+* Wearable Device Integration
+* Mobile Application
 * Cloud Deployment
 
 ---
